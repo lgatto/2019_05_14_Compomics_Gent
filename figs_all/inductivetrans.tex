@@ -1,0 +1,93 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage{etoolbox}
+\let\bbordermatrix\bordermatrix
+\patchcmd{\bbordermatrix}{8.75}{4.75}{}{}
+\patchcmd{\bbordermatrix}{\left(}{\left[}{}{}
+\patchcmd{\bbordermatrix}{\right)}{\right]}{}{}
+
+\begin{document}
+
+\subsection*{Classes and weights}
+
+$\mathbb{C} = \{c_{i=1}, \ldots, c_{i=l}\}; \Theta = \{0, 0.5, 1\}$
+
+\subsection*{Primary data and auxiliary data}
+
+$L_P = \begin{bmatrix}
+  q_{\text{1,1}} & q_{\text{1,2}} & \ldots{} & q_{\text{1,m}} \\
+  q_{\text{2,1}} & q_{\text{2,2}} & \ldots{} & q_{\text{2,m}} \\
+  \vdots      &             &           & \vdots \\
+  q_{\text{j,1}} & q_{\text{j,2}} & \ldots{} & q_{\text{j,m}} \\
+\end{bmatrix}; 
+\begin{bmatrix}
+  y_1 \\
+  y_2 \\
+  \vdots \\
+  y_j
+\end{bmatrix}; 
+k_P$
+
+\noindent
+$L_A = \begin{bmatrix}
+  b_{\text{1,1}} & b_{\text{1,2}} & \ldots{} & \ldots{} & b_{\text{1,n}} \\
+  b_{\text{2,1}} & b_{\text{2,2}} & \ldots{} & \ldots{} & b_{\text{2,n}} \\
+  \vdots      &             &           &          & \vdots \\
+  b_{\text{j,1}} & b_{\text{j,2}} & \ldots{} & \ldots{} & b_{\text{j,n}} \\
+\end{bmatrix}; 
+\begin{bmatrix}
+  y_1 \\
+  y_2 \\
+  \vdots \\
+  y_j
+\end{bmatrix}; 
+k_A$
+\subsection*{Neighbour matrices}
+
+$N_P = \bbordermatrix{~ & c_{i=1} & \ldots & c_{i=l} \cr
+  ~ & n_{\text{1,1}}^P  & \ldots{} & n_{\text{1,l}}^P \cr
+  ~ & n_{\text{2,1}}^P & \ldots{} & n_{\text{2,l}}^P \cr
+  ~ & \vdots      &           & \vdots \cr
+  ~ & n_{\text{j,1}}^P & \ldots{} & n_{\text{j,l}}^P \cr
+}; N_A = \bbordermatrix{~ & c_{i=1} & \ldots & c_{i=l} \cr
+  ~ & n_{\text{1,1}}^A  & \ldots{} & n_{\text{1,l}}^A \cr
+  ~ & n_{\text{2,1}}^A & \ldots{} & n_{\text{2,l}}^A \cr
+  ~ & \vdots      &           & \vdots \cr
+  ~ & n_{\text{j,1}}^A & \ldots{} & n_{\text{j,l}}^A
+} $
+
+
+\subsection*{Weights matrix}
+
+$\theta = \bbordermatrix{~ & c_{i=1} & \ldots & c_{i=l} \cr
+  \theta_1 &  0 & 0 & 0 \cr
+  \theta_2 & 0 & 0 & 1 \cr
+  \theta_i & \vdots & & \vdots \cr
+  \vdots & 1 & 1 & 0 \cr
+  \theta_{\Theta^l} & 1 & 1 & 1 } ~
+\begin{bmatrix}
+  F_{1_1} \\
+  F_{1_2} \\
+  ~ \\
+  F_1{_i} \\
+  \vdots \\
+  F_{1_{\Theta^l}} \\
+\end{bmatrix}
+$
+
+\subsection*{Class-weighted classifier}
+
+
+
+$V = \bbordermatrix{~ & c_{i=1} & \ldots & c_{i=l} \cr
+  1 &  &  &  \cr
+  2 &  &  &  \cr
+  3 &  & V(c_i)_j = \theta_i n_{ij}^{P} + (1 - \theta_i) n_{ij}^{A} & \cr
+  \vdots &  &  &  \cr
+  j &  & &  }
+~ y_j = argmax(V(c_i)_j)$
+
+\end{document}
